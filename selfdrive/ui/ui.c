@@ -286,7 +286,7 @@ static void set_awake(UIState *s, bool awake) {
 
 static void set_volume(UIState *s, int volume) {
   char volume_change_cmd[64];
-  sprintf(volume_change_cmd, "service call audio 3 i32 3 i32 %d i32 1", volume);
+  sprintf(volume_change_cmd, "service call audio 3 i32 3 i32 %d i32 1 >/dev/null", volume); // output redirected to >/dev/null to get rid of Result: Parcel(00000000    '....')
 
   // 5 second timeout at 60fps
   s->volume_timeout = 5 * UI_FREQ;
